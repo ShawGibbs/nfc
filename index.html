@@ -2,49 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NFC Contact Directory</title>
+    <title>Shaw Gibbs – NFC Contacts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Uses the same global stylesheet as the contact cards -->
+    <link rel="stylesheet" href="assets/style.css">
     <style>
+        /* Small landing-page specific tweaks */
         body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
-            padding: 20px;
+            justify-content: center;
+            align-items: center;
         }
-        h1 {
-            font-size: 1.4rem;
-            margin-bottom: 14px;
-        }
-        ul {
+        .directory-list {
             list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
         }
-        li {
-            margin: 8px 0;
+        .directory-item {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
-        a {
-            text-decoration: none;
-            color: #004f7c;
-            font-size: 1rem;
+        .directory-item a {
+            font-weight: 500;
         }
-        a:hover {
-            text-decoration: underline;
+        .directory-note {
+            font-size: 0.78rem;
+            color: var(--accent-soft);
+            margin-top: 8px;
         }
     </style>
 </head>
 <body>
 
-<h1>NFC Contact Pages</h1>
-<ul>
-    <!-- Add one line per person -->
-    <li><a href="nik/">Nikolaos Ioannidis</a></li>
-    <li><a href="josh/">Josh Pike</a></li>
-    <li><a href="malik/">Malik Salim</a></li>
-    <li><a href="abby/">Abby Potter</a></li>
-    <li><a href="vinay/">Vinay Bahl</a></li> 
-</ul>
+<div class="card">
+
+    <!-- Header in SG colours, reusing the same styles -->
+    <div class="profile-hero">
+        <div class="hero-text">
+            <img src="assets/sg-logo.png" alt="Shaw Gibbs" class="firm-logo">
+            <div class="role-pill">NFC Contacts</div>
+            <h1 class="profile-name">Shaw Gibbs</h1>
+            <p class="profile-title">Quick contact links for selected team members</p>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="section">
+            <div class="label">Contacts</div>
+            <ul class="directory-list">
+                <!-- One entry per person -->
+                <li class="directory-item">
+                     <a href="nik/">Nik Ioannidis – Audit Partner</a>
+                </li>
+                 <li class="directory-item">
+                     <a href="josh/">Josh Pike - Audit Senior and Technology Lead</a>
+                </li>
+                 <li class="directory-item">
+                     <a href="malik/">Malik Salim - Audit Associate Director</a>
+                 </li>
+                 <li class="directory-item">
+                     <a href="abby/">Abby Potter - Audit Manager</a>
+                 </li>
+                 <li class="directory-item">
+                     <a href="vinay/">Vinay Bahl - Audit Associate Director</a>
+                 </li> 
+                <!-- Add more as you create them, e.g.:
+                <li class="directory-item">
+                    <a href="james/">James Example – Tax Partner</a>
+                </li>
+                <li class="directory-item">
+                    <a href="amelia/">Amelia Example – Outsourcing</a>
+                </li>
+                -->
+            </ul>
+            <div class="directory-note">
+                Each link opens a mobile contact card with email, phone and vCard download.
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
