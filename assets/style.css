@@ -3,7 +3,7 @@
 /* Brand colours (from SG) */
 :root {
     --sg-green: #8BC63D;   /* main accent green */
-    --sg-grey:  #4d4e52;   /* dark header grey */
+    --sg-grey:  #40444A;   /* dark header grey */
     --sg-light-grey: #A0A2A5;
     --bg: #f5f5f5;
     --card-bg: #ffffff;
@@ -58,8 +58,8 @@ body {
 }
 
 .firm-logo {
-    height: 32px;          /* bigger logo */
-    margin-bottom: 8px;
+    height: 42px;
+    margin-bottom: 0px;
     display: block;
 }
 
@@ -73,6 +73,7 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin: 0;
+    letter-spacing: -0.4px;
 }
 
 .profile-title {
