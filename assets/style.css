@@ -79,7 +79,7 @@ body {
 .profile-title {
     font-size: 0.9rem;
     margin: 2px 0 0;
-    color: #e2e2e2;
+    #color: var(--sg-green);
 }
 
 .profile-photo {
