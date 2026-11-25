@@ -1,0 +1,272 @@
+.nik-design {
+    --ink: #242829;
+    --paper: #f7f9f3;
+    --forest: #182b23;
+    --line: #d8ded3;
+    --link: #285432;
+    padding: clamp(16px, 4vw, 48px);
+    color: var(--ink);
+    background: #e9eee5;
+    align-items: safe center;
+}
+
+.design-frame {
+    width: min(100%, 42rem);
+}
+
+.nik-design .card {
+    max-width: none;
+    border: 0;
+    border-radius: 24px;
+    box-shadow: 0 22px 60px #15241920;
+}
+
+.nik-design .profile-hero {
+    gap: clamp(12px, 4vw, 36px);
+    padding: clamp(22px, 6vw, 46px);
+    background: var(--forest);
+}
+
+.nik-design .firm-logo {
+    max-width: 100%;
+    height: 36px;
+    margin-bottom: 24px;
+}
+
+.nik-design .profile-name {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    line-height: .99;
+    letter-spacing: -.055em;
+    text-wrap: balance;
+}
+
+.nik-design .profile-title {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.nik-design .profile-photo,
+.portrait-fallback {
+    width: clamp(70px, 22vw, 154px);
+    height: auto;
+    aspect-ratio: 1;
+    flex: none;
+    border-radius: 50%;
+    border: 1px solid var(--sg-green);
+}
+
+.nik-design [hidden] {
+    display: none;
+}
+
+.portrait-fallback {
+    display: grid;
+    place-items: center;
+    color: var(--sg-green);
+    background: #304438;
+    font-size: clamp(1.35rem, 5vw, 2.6rem);
+    font-weight: 650;
+}
+
+.nik-design .card-body {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 20px 26px;
+    padding: clamp(22px, 6vw, 46px);
+    background: var(--paper);
+}
+
+.nik-design .section {
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.nik-design .label {
+    margin-bottom: 7px;
+    font-weight: 650;
+}
+
+.nik-design .button-row {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+.nik-design .btn {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+}
+
+.nik-design a:focus-visible {
+    outline: 3px solid var(--sg-green);
+    outline-offset: 3px;
+}
+
+.design-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    margin-top: 18px;
+}
+
+.design-nav a {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    padding: 0 10px;
+    color: var(--ink);
+    font-size: .85rem;
+}
+
+.design-nav [aria-current="page"] {
+    font-weight: 700;
+    text-decoration: underline 2px;
+    text-underline-offset: .35em;
+}
+
+.editorial .profile-hero {
+    border-bottom: 5px solid var(--sg-green);
+}
+
+.editorial .profile-name {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -.06em;
+}
+
+.split {
+    background: #edf0e9;
+}
+
+.split .design-frame {
+    width: min(100%, 52rem);
+}
+
+.split .card {
+    display: grid;
+    grid-template-columns: .92fr 1.08fr;
+}
+
+.split .profile-hero {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    background: var(--sg-grey);
+}
+
+.split .hero-text {
+    flex: initial;
+}
+
+.split .firm-logo {
+    margin-bottom: 18px;
+}
+
+.split .profile-photo,
+.split .portrait-fallback {
+    width: min(100%, 190px);
+    border-radius: 14px;
+}
+
+.split .card-body {
+    grid-template-columns: 1fr;
+}
+
+.split .section {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.signature {
+    background: #202625;
+}
+
+.signature .design-frame {
+    width: min(100%, 31rem);
+}
+
+.signature .profile-hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #41533a, #272f2c 65%);
+    border-top: 5px solid var(--sg-green);
+}
+
+.signature .firm-logo {
+    margin-inline: auto;
+}
+
+.signature .card-body {
+    background: #262d2a;
+    color: #f4f7ef;
+}
+
+.signature .label,
+.signature .section a {
+    color: #c5e6a7;
+}
+
+.signature .design-nav a {
+    color: #f4f7ef;
+}
+
+.direct {
+    background: #f0f2ed;
+}
+
+.direct .design-frame {
+    width: min(100%, 34rem);
+}
+
+.direct .profile-hero {
+    background: var(--sg-grey);
+}
+
+.direct .profile-photo,
+.direct .portrait-fallback {
+    width: clamp(64px, 17vw, 108px);
+}
+
+.direct .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.direct .button-row {
+    margin-bottom: 10px;
+}
+
+.direct .section {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.direct .section:last-of-type {
+    border-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .split .card {
+        display: block;
+    }
+
+    .split .profile-hero {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .split .profile-photo,
+    .split .portrait-fallback {
+        width: clamp(64px, 24vw, 130px);
+    }
+}
+
+@media (max-width: 430px) {
+    .nik-design .card-body {
+        grid-template-columns: 1fr;
+    }
+}
