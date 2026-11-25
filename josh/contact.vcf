@@ -3,6 +3,10 @@ VERSION:3.0
 N:Pike;Josh;;;
 FN:Josh Pike
 ORG:Shaw Gibbs
-TITLE:Audit Senior and Technology Lead
-URL:https://www.shawgibbs.com/
+TITLE:Audit Technology Lead
+TEL;TYPE=WORK,VOICE:+441865292213
+EMAIL;TYPE=WORK,INTERNET:josh.pike@shawgibbs.com
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/josh-pike/
+ADR;TYPE=WORK:;Summertown;264 Banbury Road;Oxford;;OX2 7DY;United Kingdom
+URL;TYPE=WORK:https://www.shawgibbs.com/
 END:VCARD

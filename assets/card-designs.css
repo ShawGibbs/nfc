@@ -1,4 +1,4 @@
-.nik-design {
+.card-design {
     padding: clamp(16px, 4vw, 48px);
     color: var(--design-ink);
     background: var(--design-page);
@@ -9,38 +9,38 @@
     width: min(100%, 42rem);
 }
 
-.nik-design .card {
+.card-design .card {
     max-width: none;
     border: 0;
     border-radius: 24px;
     box-shadow: 0 22px 60px #15241920;
 }
 
-.nik-design .profile-hero {
+.card-design .profile-hero {
     gap: clamp(12px, 4vw, 36px);
     padding: clamp(22px, 6vw, 46px);
     background: var(--design-hero);
 }
 
-.nik-design .firm-logo {
+.card-design .firm-logo {
     max-width: 100%;
     height: 36px;
     margin-bottom: 24px;
 }
 
-.nik-design .profile-name {
+.card-design .profile-name {
     font-size: clamp(2rem, 7vw, 3.5rem);
     line-height: .99;
     letter-spacing: -.055em;
     text-wrap: balance;
 }
 
-.nik-design .profile-title {
+.card-design .profile-title {
     margin-top: 10px;
     font-weight: 600;
 }
 
-.nik-design .profile-photo,
+.card-design .profile-photo,
 .portrait-fallback {
     width: clamp(70px, 22vw, 154px);
     height: auto;
@@ -59,67 +59,46 @@
     font-weight: 650;
 }
 
-.nik-design .card-body {
+.card-design .card-body {
     display: grid;
     grid-template-columns: 1.35fr 1fr;
+    align-content: start;
     gap: 20px 26px;
     padding: clamp(22px, 6vw, 46px);
     background: var(--design-paper);
 }
 
-.nik-design .section a,
-.nik-design .btn:not(.primary) {
+.card-design .section a,
+.card-design .btn:not(.primary) {
     color: var(--design-link);
 }
 
-.nik-design .section {
+.card-design .section {
     margin: 0;
     min-width: 0;
     overflow-wrap: anywhere;
 }
 
-.nik-design .label {
+.card-design .label {
     margin-bottom: 7px;
     font-weight: 650;
 }
 
-.nik-design .button-row {
+.card-design .button-row {
     grid-column: 1 / -1;
     margin: 0;
 }
 
-.nik-design .btn {
-    display: grid;
-    place-items: center;
+.card-design .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: 44px;
 }
 
-.nik-design a:focus-visible {
+.card-design a:focus-visible {
     outline: 3px solid var(--brand-accent);
     outline-offset: 3px;
-}
-
-.design-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px 10px;
-    margin-top: 18px;
-}
-
-.design-nav a {
-    display: grid;
-    place-items: center;
-    min-height: 44px;
-    padding: 0 10px;
-    color: var(--design-ink);
-    font-size: .85rem;
-}
-
-.design-nav [aria-current="page"] {
-    font-weight: 700;
-    text-decoration: underline 2px;
-    text-underline-offset: .35em;
 }
 
 .editorial .profile-hero {
@@ -204,10 +183,6 @@
     color: var(--signature-link);
 }
 
-.signature .design-nav a {
-    color: var(--signature-ink);
-}
-
 .direct {
     background: var(--direct-page);
 }
@@ -262,7 +237,7 @@
 }
 
 @media (max-width: 430px) {
-    .nik-design .card-body {
+    .card-design .card-body {
         grid-template-columns: 1fr;
     }
 }
@@ -276,11 +251,11 @@
     align-items: safe center;
 }
 
-.contact-card.nik-design {
+.contact-card.card-design {
     padding: clamp(16px, 4vw, 48px);
 }
 
-.contact-card:not(.nik-design) .portrait-fallback {
+.contact-card:not(.card-design) .portrait-fallback {
     width: 72px;
     font-size: 1.1rem;
 }
@@ -303,7 +278,7 @@
     background: var(--logo-bg);
 }
 
-.contact-card:not(.nik-design) .design-frame {
+.contact-card:not(.card-design) .design-frame {
     width: min(100%, 380px);
 }
 
@@ -312,7 +287,17 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px 12px;
-    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.template-controls > div {
+    display: grid;
+    gap: 4px;
+    flex: 1 1 8rem;
+}
+
+.template-controls p {
+    margin: 0;
 }
 
 .template-controls select {
@@ -331,4 +316,12 @@
 
 .signature .placeholder {
     color: var(--signature-ink);
+}
+
+.signature .template-controls {
+    color: var(--signature-ink);
+}
+
+.signature .template-controls a {
+    color: var(--signature-link);
 }

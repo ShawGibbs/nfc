@@ -5,10 +5,31 @@
     <title>Blank template – Contact</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/style.css">
-    <link rel="stylesheet" href="../assets/nik-designs.css">
+    <link rel="stylesheet" href="../assets/card-designs.css">
 </head>
 <body data-firm="shaw-gibbs" class="contact-card">
 <div class="design-frame">
+<div class="template-controls">
+    <div>
+        <label for="template-view">Preview layout</label>
+        <select id="template-view">
+            <option value="original" selected>Original</option>
+            <option value="editorial">Editorial</option>
+            <option value="split">Split portrait</option>
+            <option value="signature">Signature</option>
+            <option value="direct">Contact first</option>
+        </select>
+    </div>
+    <div>
+        <label for="template-firm">Firm</label>
+        <select id="template-firm">
+            <option value="shaw-gibbs" data-logo="../assets/sg-logo.svg" selected>Shaw Gibbs</option>
+            <option value="alliotts" data-logo="../assets/alliotts-logo.svg">Alliotts LLP</option>
+        </select>
+    </div>
+    <p>Published cards use <strong>Original</strong>.</p>
+    <a href="../">Contact directory</a>
+</div>
 <main class="card">
     <header class="profile-hero">
         <div class="hero-text">
@@ -35,17 +56,13 @@
             <div class="label">Office</div>
             <span class="placeholder">[Office address]</span>
         </div>
+        <div class="button-row">
+            <span class="btn primary">Save contact</span>
+            <span class="btn">View profile</span>
+        </div>
     </div>
 </main>
-<div class="template-controls">
-    <label for="template-firm">Firm</label>
-    <select id="template-firm">
-        <option value="shaw-gibbs" data-logo="../assets/sg-logo.svg">Shaw Gibbs</option>
-        <option value="alliotts" data-logo="../assets/alliotts-logo.svg">Alliotts LLP</option>
-    </select>
-    <a href="../">Contact directory</a>
 </div>
-</div>
-<script src="../assets/contact-view.js" defer></script>
+<script src="../assets/template-preview.js" defer></script>
 </body>
 </html>

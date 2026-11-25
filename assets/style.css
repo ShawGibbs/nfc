@@ -112,6 +112,7 @@ a:hover {
     gap: 8px;
     margin-top: 8px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .btn {

@@ -1,9 +1,19 @@
 {
+  "default_view": "original",
   "firms": {
     "shaw-gibbs": {
       "name": "Shaw Gibbs",
       "logo": "sg-logo.svg",
-      "website": "https://www.shawgibbs.com/"
+      "website": "https://www.shawgibbs.com/",
+      "offices": {
+        "oxford": {
+          "street": "264 Banbury Road",
+          "extended": "Summertown",
+          "city": "Oxford",
+          "postcode": "OX2 7DY",
+          "country": "United Kingdom"
+        }
+      }
     },
     "alliotts": {
       "name": "Alliotts LLP",
@@ -24,13 +34,18 @@
       "phone_display": "+44 (0) 1865 292247",
       "profile": "https://www.shawgibbs.com/team/nik-ioannidis/",
       "linkedin": "https://www.linkedin.com/in/nikolaos-ioannidis-b752ba26",
-      "office": ["264 Banbury Road", "Summertown", "Oxford", "OX2 7DY", "United Kingdom"]
+      "office": "oxford"
     },
     "josh": {
       "firm": "shaw-gibbs",
       "given_name": "Josh",
       "family_name": "Pike",
-      "role": "Audit Senior and Technology Lead"
+      "role": "Audit Technology Lead",
+      "email": "josh.pike@shawgibbs.com",
+      "phone": "+441865292213",
+      "phone_display": "+44 (0) 1865 292213",
+      "linkedin": "https://www.linkedin.com/in/josh-pike/",
+      "office": "oxford"
     },
     "malik": {
       "firm": "shaw-gibbs",

@@ -3,8 +3,11 @@ VERSION:3.0
 N:Ioannidis;Nikolaos;;;
 FN:Nikolaos Ioannidis
 ORG:Shaw Gibbs
-EMAIL;TYPE=INTERNET,WORK,pref:Nikolaos.Ioannidis@shawgibbs.com
-TEL;TYPE=WORK,VOICE,pref:+441865292247
-X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/nikolaos-ioannidis-b752ba26/
+TITLE:Audit Partner
+TEL;TYPE=WORK,VOICE:+441865292247
+EMAIL;TYPE=WORK,INTERNET:Nikolaos.Ioannidis@shawgibbs.com
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/nikolaos-ioannidi
+ s-b752ba26
+ADR;TYPE=WORK:;Summertown;264 Banbury Road;Oxford;;OX2 7DY;United Kingdom
 URL;TYPE=WORK:https://www.shawgibbs.com/team/nik-ioannidis/
 END:VCARD

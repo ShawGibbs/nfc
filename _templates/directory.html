@@ -12,21 +12,6 @@
             justify-content: center;
             align-items: center;
         }
-        #view-picker {
-            margin-bottom: 18px;
-        }
-        #card-view {
-            display: block;
-            width: 100%;
-            min-height: 44px;
-            margin-top: 4px;
-            padding: 6px 10px;
-            border: 1px solid var(--accent-soft);
-            border-radius: 8px;
-            background: var(--card-bg);
-            color: inherit;
-            font: inherit;
-        }
         .directory-list {
             list-style: none;
             margin: 0;
@@ -61,12 +46,6 @@
 
     <div class="card-body">
         <div class="section">
-            <div id="view-picker" hidden>
-                <label class="label" for="card-view">Card view</label>
-                <select id="card-view">
-$options
-                </select>
-            </div>
             <div class="label">Contacts</div>
             <ul class="directory-list">
 $contacts
@@ -76,6 +55,5 @@ $contacts
     </div>
 </div>
 
-<script src="assets/directory.js" defer></script>
 </body>
 </html>

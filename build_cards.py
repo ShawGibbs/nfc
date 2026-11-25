@@ -11,17 +11,22 @@ DATA = json.loads((ROOT / "data/contacts.json").read_text(encoding="utf-8"))
 FIRMS = DATA["firms"]
 CONTACTS = DATA["contacts"]
 VIEWS = {
-    "": "Original",
+    "original": "Original",
     "editorial": "Editorial",
     "split": "Split portrait",
     "signature": "Signature",
     "direct": "Contact first",
 }
+DEFAULT_VIEW = DATA["default_view"]
+ASSETS = "../assets/"
 
 
-def render(template, destination, **fields):
-    source = ROOT / "_templates" / f"{template}.html"
-    html = Template(source.read_text(encoding="utf-8")).substitute(fields)
+def template(filename, **fields):
+    source = ROOT / "_templates" / f"{filename}.html"
+    return Template(source.read_text(encoding="utf-8")).substitute(fields)
+
+
+def write_page(destination, html):
     destination = ROOT / destination
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(html, encoding="utf-8")
@@ -45,20 +50,22 @@ def full_name(contact):
 
 
 def render_directory():
-    options = "\n".join(
-        f'                    <option value="{key}">{label}</option>'
-        for key, label in VIEWS.items()
-    )
     entries = []
     for slug, contact in CONTACTS.items():
         name = contact.get("display_name", full_name(contact))
-        detail = FIRMS[contact["firm"]]["name"] if contact["firm"] == "alliotts" else contact["role"]
+        summary = f'{name} – {contact["role"]}'
         entries.append(
             '                <li class="directory-item">\n'
-            f'                    {link(slug + "/", f"{name} – {detail}")}\n'
+            f'                    {link(slug + "/", summary)}\n'
             '                </li>'
         )
-    render("directory", "index.html", options=options, contacts="\n".join(entries))
+    write_page("index.html", template("directory", contacts="\n".join(entries)))
+
+
+def get_office(contact):
+    if "office" in contact:
+        return FIRMS[contact["firm"]]["offices"][contact["office"]]
+    return {}
 
 
 def contact_sections(contact, website):
@@ -73,20 +80,54 @@ def contact_sections(contact, website):
             link(website, "Website", external),
             link(linkedin, "LinkedIn", external),
         ))))
-    if office := contact.get("office"):
-        details.append(section("Office", "<br>\n            ".join(map(escape, office))))
+    if office := get_office(contact):
+        parts = ("street", "extended", "city", "region", "postcode", "country")
+        address = "<br>\n            ".join(escape(office[key]) for key in parts if office.get(key))
+        details.append(section("Office", address))
     return details
 
 
-def render_card(slug, contact, view=""):
-    preview = slug == "template"
-    classic_nik = slug == "nik" and not view
+def render_actions(contact, firm, preview, classic_nik):
+    if preview:
+        save = '<span class="btn primary">Save contact</span>'
+        profile = '<span class="btn">View profile</span>'
+    else:
+        save_attributes = ' class="btn primary"' if classic_nik else ' class="btn primary" download'
+        external = ' target="_blank" rel="noopener noreferrer"' if classic_nik else ""
+        profile_attributes = ' class="btn"' + external
+        profile_url = contact.get("profile", firm["website"])
+        profile_label = "View profile" if "profile" in contact else "Firm website"
+        save = link("contact.vcf", "Save contact", save_attributes)
+        profile = link(profile_url, profile_label, profile_attributes)
+    return f'        <div class="button-row">\n            {save}\n            {profile}\n        </div>'
+
+
+def render_preview_controls(firm_key):
+    def selected(condition):
+        return " selected" if condition else ""
+
+    view_options = "\n".join(
+        f'            <option value="{key}"{selected(key == DEFAULT_VIEW)}>{label}</option>'
+        for key, label in VIEWS.items()
+    )
+    firm_options = "\n".join(
+        f'            <option value="{escape(key)}" data-logo="{escape(ASSETS + brand["logo"])}"'
+        f'{selected(key == firm_key)}>{escape(brand["name"])}</option>'
+        for key, brand in FIRMS.items()
+    )
+    return template(
+        "preview-controls", view_options=view_options, firm_options=firm_options,
+        default_view=VIEWS[DEFAULT_VIEW],
+    ).rstrip()
+
+
+def render_card(slug, contact, *, preview=False):
+    view = DEFAULT_VIEW
+    classic_nik = slug == "nik" and view == "original"
     firm_key = contact["firm"]
     firm = FIRMS[firm_key]
-    assets = "../../assets/" if view else "../assets/"
-    profile = contact.get("profile", firm["website"])
     name = contact.get("display_name", full_name(contact))
-    logo = f'<img src="{assets}{firm["logo"]}" alt="{firm["name"]}" class="firm-logo">'
+    logo = f'<img src="{escape(ASSETS + firm["logo"])}" alt="{escape(firm["name"])}" class="firm-logo">'
     portrait = ""
     if url := contact.get("portrait"):
         attributes = f'alt="{escape(name)}"' if classic_nik else 'alt="" width="220" height="220" hidden'
@@ -105,67 +146,56 @@ def render_card(slug, contact, view=""):
         ]
     else:
         details = contact_sections(contact, firm["website"])
-        download_url = "../contact.vcf" if view else "contact.vcf"
-        download = "" if classic_nik else " download"
-        profile_label = "View profile" if "profile" in contact else "Firm website"
-        external = ' target="_blank" rel="noopener noreferrer"' if slug == "nik" else ""
-        save_attributes = ' class="btn primary"' + download
-        profile_attributes = ' class="btn"' + external
-        buttons = (
-            '        <div class="button-row">\n'
-            f'            {link(download_url, "Save contact", save_attributes)}\n'
-            f'            {link(profile, profile_label, profile_attributes)}\n'
-            '        </div>'
-        )
-        if view == "direct":
-            details.insert(0, buttons)
-        else:
-            details.append(buttons)
+    actions = render_actions(contact, firm, preview, classic_nik)
+    if view == "direct":
+        details.insert(0, actions)
+    else:
+        details.append(actions)
 
     classes = "classic-nik" if classic_nik else "contact-card"
-    navigation = ""
     frame_start = frame_end = ""
-    if view:
-        classes += f" nik-design {view}"
+    if view != "original":
+        classes += f" card-design {view}"
+    if view != "original" or preview:
         frame_start, frame_end = '<div class="design-frame">', '</div>'
-        links = [
-            link(f"../{key}/" if key else "../", label, ' aria-current="page"' if key == view else "")
-            for key, label in list(VIEWS.items())[1:] + [("", VIEWS[""])]
-        ]
-        navigation = '<nav class="design-nav" aria-label="Nik card designs">\n    ' + "\n    ".join(links) + "\n</nav>"
-    elif preview:
-        frame_start, frame_end = '<div class="design-frame">', '</div>'
-        brand_options = "\n".join(
-            f'        <option value="{key}" data-logo="{assets}{brand["logo"]}">{brand["name"]}</option>'
-            for key, brand in FIRMS.items()
-        )
-        navigation = f'''<div class="template-controls">
-    <label for="template-firm">Firm</label>
-    <select id="template-firm">
-{brand_options}
-    </select>
-    <a href="../">Contact directory</a>
-</div>'''
 
-    scripts = [f'<script src="{assets}scripts.js"></script>'] if not preview else []
-    if not classic_nik:
-        if not view:
-            scripts.insert(0, f'<script src="{assets}contact-view.js" defer></script>')
-        if contact.get("portrait"):
-            scripts.insert(1 if not view else 0, f'<script src="{assets}nik-designs.js" defer></script>')
-    render(
-        "card", Path(slug) / view / "index.html",
-        page_title=escape(full_name(contact) if not preview else "Blank template"),
-        assets=assets, firm=firm_key, classes=classes, logo=logo, name=escape(name),
+    scripts = []
+    if preview:
+        scripts.append(f'<script src="{ASSETS}template-preview.js" defer></script>')
+    else:
+        if contact.get("portrait") and not classic_nik:
+            scripts.append(f'<script src="{ASSETS}card-portrait.js" defer></script>')
+        if contact.get("email"):
+            scripts.append(f'<script src="{ASSETS}scripts.js"></script>')
+
+    html = template(
+        "card",
+        page_title=escape("Blank template" if preview else full_name(contact)),
+        assets=ASSETS, firm=escape(firm_key), classes=classes, logo=logo, name=escape(name),
         role=escape(contact["role"]), portrait=portrait, card_body="\n".join(details),
-        frame_start=frame_start, frame_end=frame_end, navigation=navigation,
-        extra_styles="" if classic_nik else f'    <link rel="stylesheet" href="{assets}nik-designs.css">\n',
+        frame_start=frame_start, frame_end=frame_end,
+        preview_controls=render_preview_controls(firm_key) if preview else "",
+        extra_styles="" if classic_nik else f'    <link rel="stylesheet" href="{ASSETS}card-designs.css">\n',
         scripts="\n".join(scripts) + "\n",
     )
+    write_page(Path(slug) / "index.html", html)
 
 
 def vcard_text(text):
     return text.replace("\\", "\\\\").replace("\n", "\\n").replace(";", "\\;").replace(",", "\\,")
+
+
+def fold_vcard_line(line):
+    folded = []
+    part = bytearray()
+    for character in line:
+        encoded = character.encode("utf-8")
+        if len(part) + len(encoded) > 75:
+            folded.append(bytes(part))
+            part = bytearray(b" ")
+        part.extend(encoded)
+    folded.append(bytes(part))
+    return b"\r\n".join(folded)
 
 
 def write_vcard(slug, contact):
@@ -184,20 +214,25 @@ def write_vcard(slug, contact):
         fields.append(f"TEL;TYPE=WORK,VOICE:{phone}")
     if email := contact.get("email"):
         fields.append(f"EMAIL;TYPE=WORK,INTERNET:{email}")
-    fields.extend((f'URL:{contact.get("profile", firm["website"])}', "END:VCARD"))
-    (ROOT / slug / "contact.vcf").write_bytes(("\r\n".join(fields) + "\r\n").encode("utf-8"))
+    if linkedin := contact.get("linkedin"):
+        fields.append(f"X-SOCIALPROFILE;TYPE=linkedin:{linkedin}")
+    if office := get_office(contact):
+        parts = ("po_box", "extended", "street", "city", "region", "postcode", "country")
+        address = ";".join(vcard_text(office.get(key, "")) for key in parts)
+        fields.append(f"ADR;TYPE=WORK:{address}")
+    fields.extend((f'URL;TYPE=WORK:{contact.get("profile", firm["website"])}', "END:VCARD"))
+    body = b"\r\n".join(map(fold_vcard_line, fields)) + b"\r\n"
+    (ROOT / slug / "contact.vcf").write_bytes(body)
 
 
 if __name__ == "__main__":
+    if DEFAULT_VIEW not in VIEWS:
+        raise SystemExit(f'Unknown default_view "{DEFAULT_VIEW}". Choose from {", ".join(VIEWS)}.')
     render_directory()
     for slug, contact in CONTACTS.items():
         render_card(slug, contact)
-        if slug == "nik":
-            for view in list(VIEWS)[1:]:
-                render_card(slug, contact, view)
-        else:
-            write_vcard(slug, contact)
+        write_vcard(slug, contact)
     render_card("template", {
-        "firm": "shaw-gibbs", "given_name": "", "family_name": "",
+        "firm": next(iter(FIRMS)), "given_name": "", "family_name": "",
         "display_name": "[Name]", "role": "[Job title]",
-    })
+    }, preview=True)
