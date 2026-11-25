@@ -1,0 +1,75 @@
+{
+  "firms": {
+    "shaw-gibbs": {
+      "name": "Shaw Gibbs",
+      "logo": "sg-logo.svg",
+      "website": "https://www.shawgibbs.com/"
+    },
+    "alliotts": {
+      "name": "Alliotts LLP",
+      "logo": "alliotts-logo.svg",
+      "website": "https://www.alliotts.com/"
+    }
+  },
+  "contacts": {
+    "nik": {
+      "firm": "shaw-gibbs",
+      "given_name": "Nikolaos",
+      "family_name": "Ioannidis",
+      "display_name": "Nik Ioannidis",
+      "role": "Audit Partner",
+      "portrait": "https://www.shawgibbs.com/wp-content/uploads/2024/05/a27q7gfp.png",
+      "email": "Nikolaos.Ioannidis@shawgibbs.com",
+      "phone": "+441865292247",
+      "phone_display": "+44 (0) 1865 292247",
+      "profile": "https://www.shawgibbs.com/team/nik-ioannidis/",
+      "linkedin": "https://www.linkedin.com/in/nikolaos-ioannidis-b752ba26",
+      "office": ["264 Banbury Road", "Summertown", "Oxford", "OX2 7DY", "United Kingdom"]
+    },
+    "josh": {
+      "firm": "shaw-gibbs",
+      "given_name": "Josh",
+      "family_name": "Pike",
+      "role": "Audit Senior and Technology Lead"
+    },
+    "malik": {
+      "firm": "shaw-gibbs",
+      "given_name": "Malik",
+      "family_name": "Salim",
+      "role": "Audit Director",
+      "portrait": "https://www.shawgibbs.com/wp-content/uploads/2024/03/58l4gj7w.png",
+      "phone": "+441865292264",
+      "phone_display": "+44 1865 292264",
+      "profile": "https://www.shawgibbs.com/team/malik-salim/"
+    },
+    "abby": {
+      "firm": "shaw-gibbs",
+      "given_name": "Abby",
+      "family_name": "Potter",
+      "role": "Audit Manager",
+      "portrait": "https://www.shawgibbs.com/wp-content/uploads/2024/07/ounmoiql.png",
+      "phone": "+441865292172",
+      "phone_display": "+44 1865 292172",
+      "profile": "https://www.shawgibbs.com/team/abby-potter/"
+    },
+    "vinay": {
+      "firm": "shaw-gibbs",
+      "given_name": "Vinay",
+      "family_name": "Bahl",
+      "role": "Audit Director",
+      "portrait": "https://www.shawgibbs.com/wp-content/uploads/2024/03/56zho1ic.png",
+      "phone": "+441865292211",
+      "phone_display": "+44 1865 292211",
+      "profile": "https://www.shawgibbs.com/team/vinay-bahl/"
+    },
+    "alex": {
+      "firm": "alliotts",
+      "given_name": "Alex",
+      "family_name": "Poynor",
+      "role": "Director, Audit & Assurance",
+      "portrait": "https://www.alliotts.com/wp-content/uploads/2023/03/Alex-P_Profile.jpg",
+      "email": "alexander.poynor@alliotts.com",
+      "profile": "https://www.alliotts.com/people/alex-poynor/"
+    }
+  }
+}

@@ -21,9 +21,9 @@
             min-height: 44px;
             margin-top: 4px;
             padding: 6px 10px;
-            border: 1px solid #777;
+            border: 1px solid var(--accent-soft);
             border-radius: 8px;
-            background: white;
+            background: var(--card-bg);
             color: inherit;
             font: inherit;
         }
@@ -39,14 +39,14 @@
         .directory-item a {
             font-weight: 500;
         }
-        .directory-note {
-            font-size: 0.78rem;
-            color: var(--accent-soft);
+        .template-link {
+            display: inline-block;
             margin-top: 8px;
+            font-weight: 500;
         }
     </style>
 </head>
-<body>
+<body data-firm="shaw-gibbs">
 
 <div class="card">
 
@@ -73,29 +73,26 @@
             </div>
             <div class="label">Contacts</div>
             <ul class="directory-list">
-                <!-- One entry per person -->
                 <li class="directory-item">
-                     <a href="nik/">Nik Ioannidis – Audit Partner</a>
+                    <a href="nik/">Nik Ioannidis – Audit Partner</a>
                 </li>
-                 <li class="directory-item">
-                     <a href="josh/">Josh Pike – Audit Senior and Technology Lead</a>
+                <li class="directory-item">
+                    <a href="josh/">Josh Pike – Audit Senior and Technology Lead</a>
                 </li>
-                 <li class="directory-item">
-                     <a href="malik/">Malik Salim – Audit Director</a>
-                 </li>
-                 <li class="directory-item">
-                     <a href="abby/">Abby Potter – Audit Manager</a>
-                 </li>
-                 <li class="directory-item">
-                     <a href="vinay/">Vinay Bahl – Audit Director</a>
-                 </li>
+                <li class="directory-item">
+                    <a href="malik/">Malik Salim – Audit Director</a>
+                </li>
+                <li class="directory-item">
+                    <a href="abby/">Abby Potter – Audit Manager</a>
+                </li>
+                <li class="directory-item">
+                    <a href="vinay/">Vinay Bahl – Audit Director</a>
+                </li>
                 <li class="directory-item">
                     <a href="alex/">Alex Poynor – Alliotts LLP</a>
                 </li>
             </ul>
-            <div class="directory-note">
-                Each link opens a virtual contact card.
-            </div>
+            <a class="template-link" href="template/">Blank card template</a>
         </div>
     </div>
 </div>

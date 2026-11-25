@@ -1,12 +1,7 @@
 .nik-design {
-    --ink: #242829;
-    --paper: #f7f9f3;
-    --forest: #182b23;
-    --line: #d8ded3;
-    --link: #285432;
     padding: clamp(16px, 4vw, 48px);
-    color: var(--ink);
-    background: #e9eee5;
+    color: var(--design-ink);
+    background: var(--design-page);
     align-items: safe center;
 }
 
@@ -24,7 +19,7 @@
 .nik-design .profile-hero {
     gap: clamp(12px, 4vw, 36px);
     padding: clamp(22px, 6vw, 46px);
-    background: var(--forest);
+    background: var(--design-hero);
 }
 
 .nik-design .firm-logo {
@@ -52,18 +47,14 @@
     aspect-ratio: 1;
     flex: none;
     border-radius: 50%;
-    border: 1px solid var(--sg-green);
-}
-
-.nik-design [hidden] {
-    display: none;
+    border: 1px solid var(--brand-accent);
 }
 
 .portrait-fallback {
     display: grid;
     place-items: center;
-    color: var(--sg-green);
-    background: #304438;
+    color: var(--brand-accent);
+    background: var(--portrait-bg);
     font-size: clamp(1.35rem, 5vw, 2.6rem);
     font-weight: 650;
 }
@@ -73,7 +64,12 @@
     grid-template-columns: 1.35fr 1fr;
     gap: 20px 26px;
     padding: clamp(22px, 6vw, 46px);
-    background: var(--paper);
+    background: var(--design-paper);
+}
+
+.nik-design .section a,
+.nik-design .btn:not(.primary) {
+    color: var(--design-link);
 }
 
 .nik-design .section {
@@ -99,7 +95,7 @@
 }
 
 .nik-design a:focus-visible {
-    outline: 3px solid var(--sg-green);
+    outline: 3px solid var(--brand-accent);
     outline-offset: 3px;
 }
 
@@ -116,7 +112,7 @@
     place-items: center;
     min-height: 44px;
     padding: 0 10px;
-    color: var(--ink);
+    color: var(--design-ink);
     font-size: .85rem;
 }
 
@@ -127,7 +123,7 @@
 }
 
 .editorial .profile-hero {
-    border-bottom: 5px solid var(--sg-green);
+    border-bottom: 5px solid var(--brand-accent);
 }
 
 .editorial .profile-name {
@@ -137,7 +133,7 @@
 }
 
 .split {
-    background: #edf0e9;
+    background: var(--split-page);
 }
 
 .split .design-frame {
@@ -153,7 +149,7 @@
     flex-direction: column-reverse;
     align-items: flex-start;
     justify-content: center;
-    background: var(--sg-grey);
+    background: var(--brand-header);
 }
 
 .split .hero-text {
@@ -176,11 +172,11 @@
 
 .split .section {
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--design-line);
 }
 
 .signature {
-    background: #202625;
+    background: var(--signature-page);
 }
 
 .signature .design-frame {
@@ -190,8 +186,8 @@
 .signature .profile-hero {
     flex-direction: column-reverse;
     text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, #41533a, #272f2c 65%);
-    border-top: 5px solid var(--sg-green);
+    background: radial-gradient(ellipse at 50% 0%, var(--signature-spotlight), var(--signature-hero) 65%);
+    border-top: 5px solid var(--brand-accent);
 }
 
 .signature .firm-logo {
@@ -199,21 +195,21 @@
 }
 
 .signature .card-body {
-    background: #262d2a;
-    color: #f4f7ef;
+    background: var(--signature-paper);
+    color: var(--signature-ink);
 }
 
 .signature .label,
 .signature .section a {
-    color: #c5e6a7;
+    color: var(--signature-link);
 }
 
 .signature .design-nav a {
-    color: #f4f7ef;
+    color: var(--signature-ink);
 }
 
 .direct {
-    background: #f0f2ed;
+    background: var(--direct-page);
 }
 
 .direct .design-frame {
@@ -221,7 +217,7 @@
 }
 
 .direct .profile-hero {
-    background: var(--sg-grey);
+    background: var(--brand-header);
 }
 
 .direct .profile-photo,
@@ -241,7 +237,7 @@
 
 .direct .section {
     padding: 12px 0;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--design-line);
 }
 
 .direct .section:last-of-type {
@@ -271,46 +267,68 @@
     }
 }
 
-.portrait-fallback[hidden] {
+.contact-card [hidden] {
     display: none;
 }
 
-.alliotts {
-    --sg-green: #ffb500;
-    --sg-grey: #2c2a29;
-    --forest: #2c2a29;
-    --paper: #fdfbf4;
-    --line: #ddd5c3;
-    --link: #135e50;
-    background: #f5f2e9;
+.contact-card {
+    padding: clamp(12px, 4vw, 24px);
+    align-items: safe center;
 }
 
-.alliotts .firm-logo {
+.contact-card.nik-design {
+    padding: clamp(16px, 4vw, 48px);
+}
+
+.contact-card:not(.nik-design) .portrait-fallback {
+    width: 72px;
+    font-size: 1.1rem;
+}
+
+.contact-card .profile-photo {
+    flex: none;
+}
+
+.contact-card .hero-text,
+.contact-card .section {
+    overflow-wrap: anywhere;
+}
+
+[data-firm="alliotts"] .firm-logo {
     width: auto;
     max-width: 100%;
     height: 36px;
     padding: 7px 10px;
     border-radius: 4px;
-    background: #fdfbf4;
+    background: var(--logo-bg);
 }
 
-.alliotts .portrait-fallback {
-    background: #403935;
+.contact-card:not(.nik-design) .design-frame {
+    width: min(100%, 380px);
 }
 
-.alliotts.signature {
-    background: #1a1817;
+.template-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    margin-top: 16px;
 }
 
-.alliotts.signature .profile-hero {
-    background: radial-gradient(ellipse at top, #484037, #2c2a29 65%);
+.template-controls select {
+    min-height: 44px;
+    padding-inline: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--accent);
+    font: inherit;
 }
 
-.alliotts.signature .card-body {
-    background: #2c2a29;
+.placeholder {
+    color: var(--accent-soft);
 }
 
-.alliotts.signature .label,
-.alliotts.signature .section a {
-    color: #ffe2a1;
+.signature .placeholder {
+    color: var(--signature-ink);
 }

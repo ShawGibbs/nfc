@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shaw Gibbs – NFC Contacts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Uses the same global stylesheet as the contact cards -->
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        /* Small landing-page specific tweaks */
+        body {
+            justify-content: center;
+            align-items: center;
+        }
+        #view-picker {
+            margin-bottom: 18px;
+        }
+        #card-view {
+            display: block;
+            width: 100%;
+            min-height: 44px;
+            margin-top: 4px;
+            padding: 6px 10px;
+            border: 1px solid var(--accent-soft);
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: inherit;
+            font: inherit;
+        }
+        .directory-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .directory-item {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .directory-item a {
+            font-weight: 500;
+        }
+        .template-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body data-firm="shaw-gibbs">
+
+<div class="card">
+
+    <!-- Header in SG colours, reusing the same styles -->
+    <div class="profile-hero">
+        <div class="hero-text">
+            <img src="assets/sg-logo.svg" alt="Shaw Gibbs" class="firm-logo">
+            <h1 class="profile-name">NFC Contacts</h1>
+            <p class="profile-title">Quick contact links</p>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="section">
+            <div id="view-picker" hidden>
+                <label class="label" for="card-view">Card view</label>
+                <select id="card-view">
+$options
+                </select>
+            </div>
+            <div class="label">Contacts</div>
+            <ul class="directory-list">
+$contacts
+            </ul>
+            <a class="template-link" href="template/">Blank card template</a>
+        </div>
+    </div>
+</div>
+
+<script src="assets/directory.js" defer></script>
+</body>
+</html>

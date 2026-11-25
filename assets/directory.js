@@ -1,5 +1,5 @@
 const picker = document.querySelector("#card-view");
-const contactLinks = [...document.querySelectorAll(".directory-list a")].map(link => ({
+const contactLinks = [...document.querySelectorAll(".directory-list a, .template-link")].map(link => ({
     link,
     original: link.getAttribute("href")
 }));

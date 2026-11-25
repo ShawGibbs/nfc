@@ -1,0 +1,89 @@
+/* Shaw Gibbs is the default for the directory and existing Shaw Gibbs cards. */
+:root,
+[data-firm="shaw-gibbs"] {
+    --brand-accent: #8bc63d;
+    --brand-header: #3d3f40;
+    --bg: #f5f5f5;
+    --card-bg: #fff;
+    --accent: #222;
+    --accent-soft: #666;
+    --border: #e0e0e0;
+    --link: #004f7c;
+    --button-bg: #fafafa;
+    --design-ink: #242829;
+    --design-paper: #f7f9f3;
+    --design-hero: #182b23;
+    --design-line: #d8ded3;
+    --design-link: #285432;
+    --design-page: #e9eee5;
+    --split-page: #edf0e9;
+    --direct-page: #f0f2ed;
+    --portrait-bg: #304438;
+    --signature-page: #202625;
+    --signature-spotlight: #41533a;
+    --signature-hero: #272f2c;
+    --signature-paper: #262d2a;
+    --signature-ink: #f4f7ef;
+    --signature-link: #c5e6a7;
+}
+
+[data-firm="alliotts"] {
+    --brand-accent: #ffb500;
+    --brand-header: #2c2a29;
+    --bg: #f5f2e9;
+    --card-bg: #fdfbf4;
+    --accent: #2c2a29;
+    --accent-soft: #5e5750;
+    --border: #ddd5c3;
+    --link: #135e50;
+    --button-bg: #f5f2e9;
+    --design-ink: var(--accent);
+    --design-paper: var(--card-bg);
+    --design-hero: var(--brand-header);
+    --design-line: var(--border);
+    --design-link: var(--link);
+    --design-page: var(--bg);
+    --split-page: #f0ebdc;
+    --direct-page: #f5f2e9;
+    --portrait-bg: #403935;
+    --signature-page: #1a1817;
+    --signature-spotlight: #484037;
+    --signature-hero: #2c2a29;
+    --signature-paper: #2c2a29;
+    --signature-ink: #fdfbf4;
+    --signature-link: #ffe2a1;
+    --logo-bg: #fdfbf4;
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-firm]:not(.classic-nik) {
+        color-scheme: dark;
+        --design-ink: var(--accent);
+        --design-paper: var(--card-bg);
+        --design-line: var(--border);
+        --design-link: var(--link);
+        --design-page: var(--bg);
+        --split-page: var(--bg);
+        --direct-page: var(--bg);
+    }
+
+    [data-firm="shaw-gibbs"]:not(.classic-nik) {
+        --bg: #161b19;
+        --card-bg: #252d29;
+        --accent: #f4f7ef;
+        --accent-soft: #c5cfc5;
+        --border: #47554e;
+        --link: #c5e6a7;
+        --button-bg: #334238;
+    }
+
+    [data-firm="alliotts"]:not(.classic-nik) {
+        --bg: #1a1817;
+        --card-bg: #2c2a29;
+        --accent: #fdfbf4;
+        --accent-soft: #ded4be;
+        --border: #544d43;
+        --link: #ffe2a1;
+        --button-bg: #413931;
+    }
+}

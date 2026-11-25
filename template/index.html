@@ -2,29 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><!-- NAME --> – Contact</title>
+    <title>Blank template – Contact</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="../assets/nik-designs.css">
 </head>
-<body>
-
+<body data-firm="shaw-gibbs" class="contact-card">
+<div class="design-frame">
 <main class="card">
     <header class="profile-hero">
         <div class="hero-text">
-            <!-- FIRM IDENTITY -->
-            <h1 class="profile-name"><!-- NAME --></h1>
-            <!-- ROLE -->
+            <img src="../assets/sg-logo.svg" alt="Shaw Gibbs" class="firm-logo">
+            <h1 class="profile-name">[Name]</h1>
+            <p class="profile-title">[Job title]</p>
         </div>
+        <span class="portrait-fallback" aria-hidden="true">Photo</span>
     </header>
     <div class="card-body">
-        <!-- CONTACT DETAILS -->
-        <div class="button-row">
-            <a class="btn primary" href="contact.vcf" download>Save contact</a>
-            <a class="btn" href="<!-- WEBSITE -->"><!-- WEBSITE LABEL --></a>
+        <div class="section">
+            <div class="label">Email</div>
+            <span class="placeholder">[Email address]</span>
+        </div>
+        <div class="section">
+            <div class="label">Telephone</div>
+            <span class="placeholder">[Telephone number]</span>
+        </div>
+        <div class="section">
+            <div class="label">Online</div>
+            <span class="placeholder">[Profile or website]</span>
+        </div>
+        <div class="section">
+            <div class="label">Office</div>
+            <span class="placeholder">[Office address]</span>
         </div>
     </div>
 </main>
-
-<script src="../assets/scripts.js"></script>
+<div class="template-controls">
+    <label for="template-firm">Firm</label>
+    <select id="template-firm">
+        <option value="shaw-gibbs" data-logo="../assets/sg-logo.svg">Shaw Gibbs</option>
+        <option value="alliotts" data-logo="../assets/alliotts-logo.svg">Alliotts LLP</option>
+    </select>
+    <a href="../">Contact directory</a>
+</div>
+</div>
+<script src="../assets/contact-view.js" defer></script>
 </body>
 </html>
